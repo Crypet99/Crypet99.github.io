@@ -4,7 +4,7 @@ import path from 'path'
 
 export default defineConfig({
   plugins: [react()],
-  base: '/Crypet99.github.io/',
+  base: '/', // ← wichtig! Kein Unterordner bei User/Org-Pages
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),

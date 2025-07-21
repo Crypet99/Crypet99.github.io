@@ -1,44 +1,46 @@
 import { useState } from 'react'
-import './index.css'
-import 'leaflet/dist/leaflet.css'
-import Map from './Map'
-import { Button } from '@/components/ui/button'
+import './App.css'
+import { useNavigate } from 'react-router-dom'
 
 export default function App() {
   const [gameStarted, setGameStarted] = useState(false)
+  const [status, setStatus] = useState('Bereit zum Start')
+  const [distance, setDistance] = useState<number | null>(null)
+  const navigate = useNavigate()
 
   function startGame() {
-    console.log('Game started!')
     setGameStarted(true)
+    setStatus('Spieler wird gesucht…')
+    setTimeout(() => {
+      setStatus('Spieler gefunden!')
+      setDistance(37)
+    }, 2000)
   }
 
-  function resetGame() {
-    console.log('Game reset!')
-    setGameStarted(false)
+  function openMap() {
+    navigate('/map')
   }
 
   return (
-    <div className="min-h-screen flex flex-col items-center bg-[#121212] text-white">
-      <header className="w-full py-6">
-        <h1 className="text-center text-4xl font-bold text-violet-700">CatchMe</h1>
-      </header>
+    <div className="app-container">
+      {!gameStarted && (
+        <button className="start-button" onClick={startGame}>
+          Start
+        </button>
+      )}
 
-      <main className="flex-grow w-full max-w-5xl px-4 flex flex-col items-center gap-6">
-        {/* Map Container */}
-        <div className="w-full h-[60vh] rounded-lg overflow-hidden shadow-lg border border-violet-700">
-          <Map />
-        </div>
+      {gameStarted && <div className="status-text">{status}</div>}
 
-        {/* Buttons */}
-        <div className="flex gap-4">
-          <Button variant="secondary" onClick={startGame}>
-            Start Game
-          </Button>
-          <Button variant="secondary" onClick={resetGame}>
-            Reset Game
-          </Button>
+      {gameStarted && (
+        <div className="compass-container">
+          <div className="compass">↑</div>
+          {distance && <div className="distance">{distance} m</div>}
         </div>
-      </main>
+      )}
+
+      <button className="map-button" onClick={openMap}>
+        Map
+      </button>
     </div>
   )
 }

@@ -1,0 +1,77 @@
+.app-container {
+  min-height: 100vh;
+  background-color: #000;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 20px;
+  font-family: sans-serif;
+}
+
+.start-button {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  background: linear-gradient(to bottom right, #8b5cf6, #6b21a8);
+  border: 2px solid #7c3aed;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  box-shadow: 0 0 20px rgba(124, 58, 237, 0.6);
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.start-button:hover {
+  transform: scale(1.05);
+}
+
+.status-text {
+  margin-top: 20px;
+  font-size: 18px;
+  color: #ccc;
+}
+
+.compass-container {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.compass {
+  width: 64px;
+  height: 64px;
+  background-color: #1f1f1f;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 28px;
+  color: white;
+}
+
+.distance {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #4ade80;
+}
+
+.map-button {
+  position: absolute;
+  bottom: 24px;
+  right: 24px;
+  background-color: #333;
+  border: 1px solid #555;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.map-button:hover {
+  background-color: #444;
+}
